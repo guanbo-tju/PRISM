@@ -72,23 +72,22 @@ Outputs:
 
 ### 1️⃣ SegmentationBranch
 
-- ViT backbone
-- SAM feature distillation
-- FPN decoder
+- ViT backbone  
+- SAM feature distillation  
+- FPN decoder  
 
-Segmentation loss:
+**Segmentation loss:**
 
-\[
-\mathcal{L}_{seg}
-=
-\lambda_{KD} L_{KD}
-+
-\lambda_{Dice} L_{Dice}
-+
-\lambda_{CE} L_{CE}
-\]
+L_seg = λ_KD · L_KD + λ_Dice · L_Dice + λ_CE · L_CE  
 
-Ensures biologically meaningful nuclear delineation.
+where:
+
+- L_KD    : knowledge distillation loss  
+- L_Dice  : Dice loss  
+- L_CE    : cross-entropy loss  
+- λ_*     : balancing coefficients  
+
+This formulation enforces accurate nuclear boundary delineation while preserving high-level semantic consistency distilled from the SAM teacher.
 
 ---
 
